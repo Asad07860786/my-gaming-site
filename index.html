@@ -31,95 +31,88 @@
         footer { text-align: center; padding: 40px; color: #666; font-size: 12px; }
     </style>
 </head>
+        body {
+            background-color: #0f0f0f;
+            color: #00ffcc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background: linear-gradient(45deg, #1a1a1a, #000);
+            padding: 20px;
+            border-bottom: 2px solid #00ffcc;
+            box-shadow: 0px 0px 15px #00ffcc;
+        }
+        .container {
+            padding: 20px;
+        }
+        .game-card {
+            display: inline-block;
+            width: 250px;
+            margin: 15px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .game-card:hover {
+            transform: scale(1.05);
+            border-color: #00ffcc;
+        }
+        .game-card img {
+            width: 100%;
+            height: 150px;
+            background: #333; /* Image na hone ki surat mein black box */
+        }
+        .game-title {
+            padding: 10px;
+            font-weight: bold;
+        }
+        button {
+            background: #00ffcc;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+    </style>
+</head>
 <body>
 
-<header>🚀 NETGAMING.io</header>
+    <header>
+        <h1>NET GAMING .IO</h1>
+        <p>Best Free Online Games Portal</p>
+    </header>
 
-<div class="player-section">
-    <iframe id="game-screen" src="https://html5.gamedistribution.com/694cf919677547698659f168f0b7194f/" frameborder="0" scrolling="none"></iframe>
-    <h2 id="current-title">Zombie Defense - Playing Now</h2>
-</div>
+    <div class="container">
+        <h2>Popular Games</h2>
+        
+        <div class="game-card">
+            <img src="https://via.placeholder.com/250x150?text=Action+Game" alt="Game 1">
+            <div class="game-title">Action Strike</div>
+            <button>Play Now</button>
+        </div>
 
-<div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search 100+ Games..." onkeyup="searchGames()">
-</div>
+        <div class="game-card">
+            <img src="https://via.placeholder.com/250x150?text=Racing+Game" alt="Game 2">
+            <div class="game-title">Turbo Drift</div>
+            <button>Play Now</button>
+        </div>
 
-<div class="grid" id="gameGrid">
+        <div class="game-card">
+            <img src="https://via.placeholder.com/250x150?text=Puzzle+Game" alt="Game 3">
+            <div class="game-title">Mind Master</div>
+            <button>Play Now</button>
+        </div>
     </div>
 
-<footer>&copy; 2024 My Private Gaming Site - High Quality HTML5 Games</footer>
-
-<script>
-    // GAME DATA (Yahan aap 100 games add kar sakte hain)
-    const games = [
-        { title: "Zombie Defense", thumb: "https://img.gamedistribution.com/694cf919677547698659f168f0b7194f-512x384.jpeg", url: "https://html5.gamedistribution.com/694cf919677547698659f168f0b7194f/" },
-        { title: "Car Racing 3D", thumb: "https://img.gamedistribution.com/a9aa8807d9134a47a19c5b61f22df807-512x384.jpeg", url: "https://html5.gamedistribution.com/a9aa8807d9134a47a19c5b61f22df807/" },
-        { title: "Moto X3M", thumb: "https://img.gamedistribution.com/20263625752c4c3da0339ef67362847c-512x384.jpeg", url: "https://html5.gamedistribution.com/20263625752c4c3da0339ef67362847c/" },
-        { title: "Stickman Hook", thumb: "https://img.gamedistribution.com/837267098482436f8634834e54a50d43-512x384.jpeg", url: "https://html5.gamedistribution.com/837267098482436f8634834e54a50d43/" },
-        { title: "Penalty Challenge", thumb: "https://img.gamedistribution.com/00742199b0684f188338986873919b8d-512x384.jpeg", url: "https://html5.gamedistribution.com/00742199b0684f188338986873919b8d/" },
-        { title: "Table Tennis", thumb: "https://img.gamedistribution.com/9788d407865c4046bc0734005118742d-512x384.jpeg", url: "https://html5.gamedistribution.com/9788d407865c4046bc0734005118742d/" },
-        { title: "Subway Surfers", thumb: "https://img.gamedistribution.com/393273e91d57429188d8b444b0d01476-512x384.jpeg", url: "https://html5.gamedistribution.com/393273e91d57429188d8b444b0d01476/" },
-        { title: "Hill Climb Racing", thumb: "https://img.gamedistribution.com/5a7f9a1f207040f7b539c19b3876e9f1-512x384.jpeg", url: "https://html5.gamedistribution.com/5a7f9a1f207040f7b539c19b3876e9f1/" },
-        { title: "Temple Run 2", thumb: "https://img.gamedistribution.com/4952d7e0d37e462d96c9c8114c000674-512x384.jpeg", url: "https://html5.gamedistribution.com/4952d7e0d37e462d96c9c8114c000674/" },
-        { title: "8 Ball Pool", thumb: "https://img.gamedistribution.com/4458f407865c4046bc0734005118742d-512x384.jpeg", url: "https://html5.gamedistribution.com/4458f407865c4046bc0734005118742d/" },
-        { title: "Knife Hit", thumb: "https://img.gamedistribution.com/669f9a1f207040f7b539c19b3876e9f1-512x384.jpeg", url: "https://html5.gamedistribution.com/669f9a1f207040f7b539c19b3876e9f1/" },
-        { title: "Bottle Flip", thumb: "https://img.gamedistribution.com/f0742199b0684f188338986873919b8d-512x384.jpeg", url: "https://html5.gamedistribution.com/f0742199b0684f188338986873919b8d/" },
-        { title: "Paper.io 2", thumb: "https://img.gamedistribution.com/712367098482436f8634834e54a50d43-512x384.jpeg", url: "https://html5.gamedistribution.com/712367098482436f8634834e54a50d43/" },
-        { title: "Slither.io", thumb: "https://img.gamedistribution.com/11263625752c4c3da0339ef67362847c-512x384.jpeg", url: "https://html5.gamedistribution.com/11263625752c4c3da0339ef67362847c/" },
-        { title: "Moto Road Rash", thumb: "https://img.gamedistribution.com/9788d407865c4046bc0734005118742d-512x384.jpeg", url: "https://html5.gamedistribution.com/9788d407865c4046bc0734005118742d/" },
-        { title: "Traffic Racer", thumb: "https://img.gamedistribution.com/c9aa8807d9134a47a19c5b61f22df807-512x384.jpeg", url: "https://html5.gamedistribution.com/c9aa8807d9134a47a19c5b61f22df807/" },
-        { title: "Drift Boss", thumb: "https://img.gamedistribution.com/393273e91d57429188d8b444b0d01476-512x384.jpeg", url: "https://html5.gamedistribution.com/393273e91d57429188d8b444b0d01476/" },
-        { title: "Pool 8 Ball", thumb: "https://img.gamedistribution.com/4458f407865c4046bc0734005118742d-512x384.jpeg", url: "https://html5.gamedistribution.com/4458f407865c4046bc0734005118742d/" },
-        { title: "Fireboy and Watergirl", thumb: "https://img.gamedistribution.com/1a7f9a1f207040f7b539c19b3876e9f1-512x384.jpeg", url: "https://html5.gamedistribution.com/1a7f9a1f207040f7b539c19b3876e9f1/" },
-        { title: "Football League", thumb: "https://img.gamedistribution.com/00742199b0684f188338986873919b8d-512x384.jpeg", url: "https://html5.gamedistribution.com/00742199b0684f188338986873919b8d/" },
-        { title: "Sniper Mission", thumb: "https://img.gamedistribution.com/694cf919677547698659f168f0b7194f-512x384.jpeg", url: "https://html5.gamedistribution.com/694cf919677547698659f168f0b7194f/" },
-        { title: "Fruit Ninja Classic", thumb: "https://img.gamedistribution.com/712367098482436f8634834e54a50d43-512x384.jpeg", url: "https://html5.gamedistribution.com/712367098482436f8634834e54a50d43/" },
-        { title: "Extreme Car Driving", thumb: "https://img.gamedistribution.com/a9aa8807d9134a47a19c5b61f22df807-512x384.jpeg", url: "https://html5.gamedistribution.com/a9aa8807d9134a47a19c5b61f22df807/" },
-        { title: "Bubble Shooter", thumb: "https://img.gamedistribution.com/20263625752c4c3da0339ef67362847c-512x384.jpeg", url: "https://html5.gamedistribution.com/20263625752c4c3da0339ef67362847c/" },
-        { title: "Tomb Runner", thumb: "https://img.gamedistribution.com/4952d7e0d37e462d96c9c8114c000674-512x384.jpeg", url: "https://html5.gamedistribution.com/4952d7e0d37e462d96c9c8114c000674/" },
-        { title: "Angry Birds Space", thumb: "https://img.gamedistribution.com/669f9a1f207040f7b539c19b3876e9f1-512x384.jpeg", url: "https://html5.gamedistribution.com/669f9a1f207040f7b539c19b3876e9f1/" },
-        { title: "Zombie Hunter", thumb: "https://img.gamedistribution.com/f0742199b0684f188338986873919b8d-512x384.jpeg", url: "https://html5.gamedistribution.com/f0742199b0684f188338986873919b8d/" },
-        { title: "Candy Match 3", thumb: "https://img.gamedistribution.com/11263625752c4c3da0339ef67362847c-512x384.jpeg", url: "https://html5.gamedistribution.com/11263625752c4c3da0339ef67362847c/" },
-        { title: "Piano Tiles", thumb: "https://img.gamedistribution.com/837267098482436f8634834e54a50d43-512x384.jpeg", url: "https://html5.gamedistribution.com/837267098482436f8634834e54a50d43/" },
-        { title: "Cricket World Cup", thumb: "https://img.gamedistribution.com/9788d407865c4046bc0734005118742d-512x384.jpeg", url: "https://html5.gamedistribution.com/9788d407865c4046bc0734005118742d/" },
-        { title: "Ludo Hero", thumb: "https://img.gamedistribution.com/5a7f9a1f207040f7b539c19b3876e9f1-512x384.jpeg", url: "https://html5.gamedistribution.com/5a7f9a1f207040f7b539c19b3876e9f1/" },
-        { title: "Subway Runner", thumb: "https://img.gamedistribution.com/393273e91d57429188d8b444b0d01476-512x384.jpeg", url: "https://html5.gamedistribution.com/393273e91d57429188d8b444b0d01476/" },
-        { title: "Cyber Truck", thumb: "https://img.gamedistribution.com/c9aa8807d9134a47a19c5b61f22df807-512x384.jpeg", url: "https://html5.gamedistribution.com/c9aa8807d9134a47a19c5b61f22df807/" },
-        { title: "Basketball Kings", thumb: "https://img.gamedistribution.com/20263625752c4c3da0339ef67362847c-512x384.jpeg", url: "https://html5.gamedistribution.com/20263625752c4c3da0339ef67362847c/" },
-        { title: "Sudoku Master", thumb: "https://img.gamedistribution.com/4458f407865c4046bc0734005118742d-512x384.jpeg", url: "https://html5.gamedistribution.com/4458f407865c4046bc0734005118742d/" },
-        { title: "Temple Run 3D", thumb: "https://img.gamedistribution.com/4952d7e0d37e462d96c9c8114c000674-512x384.jpeg", url: "https://html5.gamedistribution.com/4952d7e0d37e462d96c9c8114c000674/" },
-        // Mazeed games isi tarah add karte jayen...dd
-    ];
-
-    function displayGames(gamesList) {
-        const grid = document.getElementById('gameGrid');
-        grid.innerHTML = "";
-        gamesList.forEach(game => {
-            grid.innerHTML += `
-                <div class="card" onclick="playGame('${game.url}', '${game.title}')">
-                    <span class="badge">FREE</span>
-                    <img src="${game.thumb}" alt="${game.title}">
-                    <p>${game.title}</p>
-                </div>
-            `;
-        });
-    }
-
-    function playGame(url, title) {
-        document.getElementById('game-screen').src = url;
-        document.getElementById('current-title').innerText = title + " - Playing Now";
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    function searchGames() {
-        let term = document.getElementById('searchInput').value.toLowerCase();
-        let filtered = games.filter(g => g.title.toLowerCase().includes(term));
-        displayGames(filtered);
-    }
-
-    // Initial Load
-    displayGames(games);
-</script>
-
 </body>
+</html>
+
 </html>
