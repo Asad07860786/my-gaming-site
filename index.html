@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Gaming Zone | 100+ Free Games</title>
+    <style>
+        :root { --main-color: #00d2ff; --bg-color: #0f0f0f; --card-bg: #1e1e1e; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg-color); color: white; margin: 0; }
+        
+        /* Header */
+        header { background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%); padding: 15px; text-align: center; font-size: 26px; font-weight: bold; position: sticky; top: 0; z-index: 100; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+
+        /* Game Player Section */
+        .player-section { display: flex; flex-direction: column; align-items: center; padding: 20px; background: #000; }
+        #game-screen { width: 90%; max-width: 900px; height: 550px; border: 3px solid var(--main-color); border-radius: 15px; box-shadow: 0 0 20px var(--main-color); }
+
+        /* Search & Filter */
+        .search-bar { padding: 20px; text-align: center; }
+        input { padding: 12px; width: 60%; border-radius: 25px; border: none; outline: none; font-size: 16px; }
+
+        /* Games Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; padding: 30px; max-width: 1200px; margin: auto; }
+        .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; transition: 0.3s; cursor: pointer; border: 1px solid #333; position: relative; }
+        .card:hover { transform: translateY(-10px); border-color: var(--main-color); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .card img { width: 100%; height: 120px; object-fit: cover; }
+        .card p { padding: 10px; margin: 0; font-size: 14px; text-align: center; font-weight: bold; }
+        .badge { position: absolute; top: 5px; right: 5px; background: red; font-size: 10px; padding: 3px 7px; border-radius: 5px; }
+
+        footer { text-align: center; padding: 40px; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<header>🚀 ULTIMATE GAMING ZONE</header>
+
+<div class="player-section">
+    <iframe id="game-screen" src="https://html5.gamedistribution.com/694cf919677547698659f168f0b7194f/" frameborder="0" scrolling="none"></iframe>
+    <h2 id="current-title">Zombie Defense - Playing Now</h2>
+</div>
+
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search 100+ Games..." onkeyup="searchGames()">
+</div>
+
+<div class="grid" id="gameGrid">
+    </div>
+
+<footer>&copy; 2024 My Private Gaming Site - High Quality HTML5 Games</footer>
+
+<script>
+    // GAME DATA (Yahan aap 100 games add kar sakte hain)
+    const games = [
+        { title: "Zombie Defense", thumb: "https://img.gamedistribution.com/694cf919677547698659f168f0b7194f-512x384.jpeg", url: "https://html5.gamedistribution.com/694cf919677547698659f168f0b7194f/" },
+        { title: "Car Racing 3D", thumb: "https://img.gamedistribution.com/a9aa8807d9134a47a19c5b61f22df807-512x384.jpeg", url: "https://html5.gamedistribution.com/a9aa8807d9134a47a19c5b61f22df807/" },
+        { title: "Moto X3M", thumb: "https://img.gamedistribution.com/20263625752c4c3da0339ef67362847c-512x384.jpeg", url: "https://html5.gamedistribution.com/20263625752c4c3da0339ef67362847c/" },
+        { title: "Stickman Hook", thumb: "https://img.gamedistribution.com/837267098482436f8634834e54a50d43-512x384.jpeg", url: "https://html5.gamedistribution.com/837267098482436f8634834e54a50d43/" },
+        { title: "Penalty Challenge", thumb: "https://img.gamedistribution.com/00742199b0684f188338986873919b8d-512x384.jpeg", url: "https://html5.gamedistribution.com/00742199b0684f188338986873919b8d/" },
+        { title: "Table Tennis", thumb: "https://img.gamedistribution.com/9788d407865c4046bc0734005118742d-512x384.jpeg", url: "https://html5.gamedistribution.com/9788d407865c4046bc0734005118742d/" },
+        // Mazeed games isi tarah add karte jayen...
+    ];
+
+    function displayGames(gamesList) {
+        const grid = document.getElementById('gameGrid');
+        grid.innerHTML = "";
+        gamesList.forEach(game => {
+            grid.innerHTML += `
+                <div class="card" onclick="playGame('${game.url}', '${game.title}')">
+                    <span class="badge">FREE</span>
+                    <img src="${game.thumb}" alt="${game.title}">
+                    <p>${game.title}</p>
+                </div>
+            `;
+        });
+    }
+
+    function playGame(url, title) {
+        document.getElementById('game-screen').src = url;
+        document.getElementById('current-title').innerText = title + " - Playing Now";
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function searchGames() {
+        let term = document.getElementById('searchInput').value.toLowerCase();
+        let filtered = games.filter(g => g.title.toLowerCase().includes(term));
+        displayGames(filtered);
+    }
+
+    // Initial Load
+    displayGames(games);
+</script>
+
+</body>
+</html>
